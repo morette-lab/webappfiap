@@ -1,16 +1,17 @@
 import React from 'react';
-import * as RB from 'react-bootstrap';
+import styles from './Button.module.css'
 
-interface ButtonsProps {
-  variant: "primary"
+interface ButtonProps {
   text: string
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  secondary?: boolean;
 }
 
-function Button({ variant, text }: ButtonsProps) {
+function Button({ text, onClick, secondary }: ButtonProps) {
+  const style = secondary ? styles.secondary : styles.primary
+
   return (
-    <>
-      <RB.Button variant={variant}>{text}</RB.Button>
-    </>
+    <button className={style} onClick={onClick}>{text}</button>
   )
 }
 

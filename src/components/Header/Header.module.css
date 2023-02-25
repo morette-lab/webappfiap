@@ -1,0 +1,11 @@
+@import "../../constants/default.css";
+
+.container {
+    background-color: var(--blue);
+    width: 100vw;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}

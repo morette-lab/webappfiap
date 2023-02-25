@@ -1,0 +1,10 @@
+@import "../../constants/default.css";
+
+.title {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.text {
+    color: #7B8790;
+}

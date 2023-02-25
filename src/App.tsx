@@ -9,12 +9,17 @@ import {
 
 import Home from './screens/Home';
 import NotFound from './screens/NotFound';
+import Login from './screens/Login';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     errorElement: <NotFound />
+  },
+  {
+    path: "/login",
+    element: <Login />
   }
 ])
 
