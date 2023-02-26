@@ -8,7 +8,14 @@ function Input({  }: InputProps) {
   
 
   return (
-   <div></div>
+   <div>
+        <form>
+            <label className="name">Nome</label>
+            <input></input>
+            <label>Senha</label>
+            <input type="password" className="password"></input>
+        </form>
+   </div>
   )
 }
 
