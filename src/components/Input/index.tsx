@@ -1,21 +1,27 @@
-import React from 'react';
+import styles from './Input.module.css'
 
 interface InputProps {
-  
+  id: string
+  label: string
+  placeholder: string
+  type: "email" | "password" | "text"
 }
 
-function Input({  }: InputProps) {
-  
+function Input({ id, label, placeholder, type }: InputProps) {
+  // TODO: show eye password type
 
   return (
-   <div>
-        <form>
-            <label className="name">Nome</label>
-            <input></input>
-            <label>Senha</label>
-            <input type="password" className="password"></input>
-        </form>
-   </div>
+    <div>
+      <label className={styles.label}>
+        {label}
+        <input
+          className={styles.input}
+          id={id}
+          placeholder={placeholder}
+          type={type}
+        ></input>
+      </label>
+    </div>
   )
 }
 
