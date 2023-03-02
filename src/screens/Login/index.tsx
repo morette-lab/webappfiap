@@ -1,25 +1,59 @@
-import React from 'react';
-import styles from './Login.module.css';
-import Button from '../../components/Button';
-import Header from '../../components/Header';
+import { useState } from 'react'
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom'
+import styles from './Login.module.css';
+import { Header, Button, Input } from '../../components';
+
 
 function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const setInputValue = (event: any, callback: Function) => {
+    callback(event.target.value)
+  }
+
   return (
     <div>
       <Header title="Acessar" />
-      <h2 className={styles.title}>Acessar</h2>
-      <p className={styles.text}>Com o e-mail e senha entrar</p>
-      <Form.Check
-        type="checkbox"
-        id={"checkbox"}
-        label={"Lembrar senha"}
-      />
-      <div>
-        <Button secondary text="Cadastrar" />
-        <Button text="Entrar" />
+      <div className={styles.content}>
+        <h2 className={styles.title}>Acessar</h2>
+        <p className={styles.text}>Com o e-mail e senha entrar</p>
+        <Input
+          id="email"
+          label="Digite seu e-mail"
+          placeholder="Email..."
+          type="email"
+          onChange={(event) => setInputValue(event, setEmail)}
+          value={email}
+        />
+        <Input
+          id="password"
+          label="Digite sua senha"
+          placeholder="Senha..."
+          type="password"
+          onChange={(event) => setInputValue(event, setPassword)}
+          value={password}
+        />
+        <div className={styles.passwordcontainer}>
+          <Form.Check
+            type="checkbox"
+            id={"checkbox"}
+            label={"Lembrar senha"}
+          />
+          <Link to="/" className={styles.forgotpassword}>Esqueci minha senha</Link>
+        </div>
+        <div className={styles.buttons}>
+          <Button secondary text="Cadastrar" />
+          <Button text="Entrar" />
+        </div>
+        <div className={styles.secondaryaccess}>
+          <span>
+            Ou acesse com
+          </span>
+        </div>
       </div>
-    </div>
+    </div >
   )
 }
 

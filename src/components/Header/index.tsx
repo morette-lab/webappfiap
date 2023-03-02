@@ -9,8 +9,12 @@ interface HeaderProps {
 function Header({ title }: HeaderProps) {
   return (
     <div className={styles.container}>
-      <img src={arrow} width={20} height={20} />
-      <h2>{title}</h2>
+      <div>
+        <img src={arrow} width={20} height={20} />
+      </div>
+      <div className={styles.title}>
+        <h2>{title}</h2>
+      </div>
     </div>
   )
 }

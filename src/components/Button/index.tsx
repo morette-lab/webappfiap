@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from './Button.module.css'
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLElement> {
   text: string
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   secondary?: boolean;
 }
 
-function Button({ text, onClick, secondary }: ButtonProps) {
+function Button({ text, onClick, secondary, ...props }: ButtonProps) {
   const style = secondary ? styles.secondary : styles.primary
 
   return (
-    <button className={style} onClick={onClick}>{text}</button>
+    <button className={style} onClick={onClick} {...props}>{text}</button>
   )
 }
 

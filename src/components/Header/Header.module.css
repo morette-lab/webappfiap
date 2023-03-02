@@ -8,4 +8,10 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    width: 60vw;
+    justify-content: flex-end;
 }

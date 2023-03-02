@@ -4,14 +4,15 @@
     background-color: var(--blue);
     color: white;
     border: none;
-    padding: 10px 80px;
+    padding: 10px 50px;
     border-radius: 8px;
+    border: 1px solid var(--blue);
 }
 
 .secondary {
     background-color: white;
     color: var(--blue);
     border: 1px solid var(--blue);
-    padding: 10px 80px;
+    padding: 10px 50px;
     border-radius: 8px;
 }
