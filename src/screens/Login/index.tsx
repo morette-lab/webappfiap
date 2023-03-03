@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom'
+
 import styles from './Login.module.css';
 import { Header, Button, Input } from '../../components';
-
+import { googleIcon, facebookIcon } from '../../assets/images'
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -52,8 +53,12 @@ function Login() {
             Ou acesse com
           </span>
         </div>
+        <div className={styles.socialmediaicons}>
+          <img alt="Google Icon" src={googleIcon} />
+          <img alt="Facebook Icon" src={facebookIcon} />
+        </div>
       </div>
-    </div >
+    </div>
   )
 }
 

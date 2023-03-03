@@ -45,6 +45,20 @@
     justify-content: space-around;
 }
 
+.socialmediaicons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.socialmediaicons > img {
+    width: 60px
+}
+
+.socialmediaicons > img:nth-child(2) {
+    border-radius: 100px;
+}
+
 @media (max-width: 385px) {
     .buttons > button {
 	padding: 10px 30px;
