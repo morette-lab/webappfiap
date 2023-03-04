@@ -1,0 +1,25 @@
+@import "../../../constants/default.css";
+
+.confirmPurchase {
+    font-weight: bold;
+    color: white;
+}
+
+.productsTable {
+    width: 100%;
+    color: white;
+}
+
+.productsTable tr {
+    display: flex;
+    justify-content: space-around;
+}
+
+.initialContent {
+    background-color: var(--blue);
+    border-radius: 0px 0px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

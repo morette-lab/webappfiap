@@ -10,6 +10,7 @@ import Home from './screens/Home';
 import NotFound from './screens/NotFound';
 import Login from './screens/Login';
 import Product from './screens/Product'
+import ConfirmPayment from './screens/Payment/Confirm';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/product-showcase",
     element: <Product />
+  },
+  {
+    path: "/confirm-payment",
+    element: <ConfirmPayment />
   }
 ])
 
