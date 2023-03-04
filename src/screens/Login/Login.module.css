@@ -6,13 +6,13 @@
 }
 
 .text {
-    color: #7B8790;
+    color: var(--light-gray-2);
 }
 .content {
     margin: 30px;
 }
 
-.secondaryaccess {
+.secondaryAccess {
     margin-top: 20px;
     width: 100%;
     height: 13.5px;
@@ -20,21 +20,21 @@
     text-align: center;
 }
 
-.secondaryaccess > span {
+.secondaryAccess > span {
     color: gray;
     padding: 0 10px;
     background-color: white;
     font-size: 12px;
 }
 
-.passwordcontainer {
+.passwordContainer {
     margin: 10px 0;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
 }
 
-.forgotpassword {
+.forgotPassword {
     font-weight: bold;
     color: var(--blue);
     text-decoration: none;
@@ -45,17 +45,17 @@
     justify-content: space-around;
 }
 
-.socialmediaicons {
+.socialMediaIcons {
     margin-top: 30px;
     display: flex;
     justify-content: space-evenly;
 }
 
-.socialmediaicons > img {
+.socialMediaIcons > img {
     width: 60px
 }
 
-.socialmediaicons > img:nth-child(2) {
+.socialMediaIcons > img:nth-child(2) {
     border-radius: 100px;
 }
 

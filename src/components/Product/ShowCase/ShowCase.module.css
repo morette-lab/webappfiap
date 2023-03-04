@@ -1,0 +1,106 @@
+@import "./../../../constants/default.css";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.smallInfo {
+    color: var(--light-gray-2);
+    align-self: flex-start;
+}
+
+.description {
+    font-weight: bold;
+}
+
+.img {
+    width: 30%;
+}
+
+.sale {
+    align-self: flex-start;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+}
+
+.sale p {
+    color: var(--light-gray-2);
+}
+
+.sale p, .enterInGroupContainer p { margin: 0}
+
+.saleButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.enterInGroup {
+    margin-top: 20px;
+    width: 100%;
+    height: 13.5px;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+
+.enterInGroup > span {
+    color: gray;
+    padding: 0 10px;
+    background-color: white;
+    font-size: 12px;
+}
+
+.enterInGroupContainer {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.enterInGroupContainer > div:nth-child(1) > p:nth-child(1) {
+    font-weight: bold;
+}
+
+.shareIconContainer {
+    border: 2px solid var(--blue);
+    padding: 5px 5px;
+    border-radius: 30px;
+}
+
+.shareIcon {
+    width: 30px;
+    height: 30px;
+    color: var(--blue);
+}
+
+@media (max-width: 1150px) {
+    .img {
+	width: 50%;
+    }
+}
+
+@media (max-width: 405px) {
+    .saleButtons, .enterInGroupContainer {
+	flex-direction: column;
+    }
+
+    .enterInGroupContainer > div:nth-child(1) {
+	text-align: center;
+	margin-bottom: 10px;
+    }
+
+    .saleButtons > button {
+	margin: 5px;
+    }
+}

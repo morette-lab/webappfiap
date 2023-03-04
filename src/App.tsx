@@ -9,6 +9,7 @@ import {
 import Home from './screens/Home';
 import NotFound from './screens/NotFound';
 import Login from './screens/Login';
+import Product from './screens/Product'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "/product-showcase",
+    element: <Product />
   }
 ])
 

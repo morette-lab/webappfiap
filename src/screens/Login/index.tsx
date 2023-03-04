@@ -36,24 +36,24 @@ function Login() {
           onChange={(event) => setInputValue(event, setPassword)}
           value={password}
         />
-        <div className={styles.passwordcontainer}>
+        <div className={styles.passwordContainer}>
           <Form.Check
             type="checkbox"
             id={"checkbox"}
             label={"Lembrar senha"}
           />
-          <Link to="/" className={styles.forgotpassword}>Esqueci minha senha</Link>
+          <Link to="/" className={styles.forgotPassword}>Esqueci minha senha</Link>
         </div>
         <div className={styles.buttons}>
           <Button secondary text="Cadastrar" />
           <Button text="Entrar" />
         </div>
-        <div className={styles.secondaryaccess}>
+        <div className={styles.secondaryAccess}>
           <span>
             Ou acesse com
           </span>
         </div>
-        <div className={styles.socialmediaicons}>
+        <div className={styles.socialMediaIcons}>
           <img alt="Google Icon" src={googleIcon} />
           <img alt="Facebook Icon" src={facebookIcon} />
         </div>
