@@ -1,10 +1,7 @@
 import { useState } from 'react'
-import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom'
 
-import styles from './Login.module.css';
-import { Header, Button, Input } from '../../components';
-import { googleIcon, facebookIcon } from '../../assets/images'
+
+import LoginLayout from './../../layouts/Login'
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -14,51 +11,24 @@ function Login() {
     callback(event.target.value)
   }
 
+  const onChange = (event: any, type: "email" | "password") => {
+    switch (type) {
+      case "email":
+        setInputValue(event, setEmail)
+        break;
+      case "password":
+        setInputValue(event, setPassword)
+        break;
+    }
+
+  }
+
   return (
-    <div>
-      <Header title="Acessar" />
-      <div className={styles.content}>
-        <h2 className={styles.title}>Acessar</h2>
-        <p className={styles.text}>Com o e-mail e senha entrar</p>
-        <Input
-          id="email"
-          label="Digite seu e-mail"
-          placeholder="Email..."
-          type="email"
-          onChange={(event) => setInputValue(event, setEmail)}
-          value={email}
-        />
-        <Input
-          id="password"
-          label="Digite sua senha"
-          placeholder="Senha..."
-          type="password"
-          onChange={(event) => setInputValue(event, setPassword)}
-          value={password}
-        />
-        <div className={styles.passwordContainer}>
-          <Form.Check
-            type="checkbox"
-            id={"checkbox"}
-            label={"Lembrar senha"}
-          />
-          <Link to="/" className={styles.forgotPassword}>Esqueci minha senha</Link>
-        </div>
-        <div className={styles.buttons}>
-          <Button secondary text="Cadastrar" />
-          <Button text="Entrar" />
-        </div>
-        <div className={styles.secondaryAccess}>
-          <span>
-            Ou acesse com
-          </span>
-        </div>
-        <div className={styles.socialMediaIcons}>
-          <img alt="Google Icon" src={googleIcon} />
-          <img alt="Facebook Icon" src={facebookIcon} />
-        </div>
-      </div>
-    </div>
+    <LoginLayout
+      email={email}
+      password={password}
+      onChange={onChange}
+    />
   )
 }
 
