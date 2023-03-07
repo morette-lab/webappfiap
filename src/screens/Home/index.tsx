@@ -1,15 +1,9 @@
 import Input from '../../components/Input'
+import HomeLayout from './../../layouts/Home'
 
 function Home() {
   return (
-    <div>
-      <Input
-        id="asd"
-        label="Digite seu email..."
-        placeholder="Email..."
-        type="email"
-      />
-    </div>
+    <HomeLayout />
   )
 }
 
