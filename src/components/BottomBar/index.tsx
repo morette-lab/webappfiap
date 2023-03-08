@@ -1,9 +1,10 @@
+//import { useState } from 'react'
 import styles from './BottomBar.module.css'
 
 interface ImageItem {
   source: string;
   alt: string;
-  key: any;
+  key: string;
 }
 
 interface BottomBarProps {
@@ -11,13 +12,19 @@ interface BottomBarProps {
 }
 
 function BottomBar({ icons }: BottomBarProps) {
+  //const [selectedIcon, setSelectedIcon] = useState<string | null>(null)
   // TODO: selected icon style
 
   return (
     <div className={styles.container}>
       {icons.map((a: ImageItem) => {
         return (
-          <img key={a.key} src={a.source} alt={a.alt} className={styles.icon} />
+          <img
+            key={a.key}
+            src={a.source}
+            alt={a.alt}
+            className={styles.icon}
+          />
         )
       })}
     </div>

@@ -1,10 +1,9 @@
-import React from 'react';
+import SignUpLayout from './../../layouts/SignUp'
+
 
 function SignUp({ }) {
   return (
-    <div>
-
-    </div>
+    <SignUpLayout />
   )
 }
 

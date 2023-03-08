@@ -11,6 +11,7 @@ import NotFound from './screens/NotFound';
 import Login from './screens/Login';
 import Product from './screens/Product'
 import ConfirmPayment from './screens/Payment/Confirm';
+import SignUp from './screens/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/confirm-payment",
     element: <ConfirmPayment />
+  },
+  {
+    path: "/signup",
+    element: <SignUp />
   }
 ])
 
