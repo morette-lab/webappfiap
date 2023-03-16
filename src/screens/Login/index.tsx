@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-
 import LoginLayout from './../../layouts/Login'
+import { Api } from './../../services/api'
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -20,7 +20,10 @@ function Login() {
         setInputValue(event, setPassword)
         break;
     }
+  }
 
+  const requestLogin = (email: string, password: string) => {
+    Api.loginAPI({ email, password })
   }
 
   return (
