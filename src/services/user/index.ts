@@ -1,10 +1,10 @@
 import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse } from './types'
 
-const BASE_URL = ""
+const BASE_URL = "http://localhost:8080"
 
 const UserApi = {
   login: (payload: LoginPayload): LoginResponse => {
-    const response = requestPOSTAPI(BASE_URL, {email: payload.email, password: payload.password})
+    const response = requestPOSTAPI("/api/v1/customers/login", {email: payload.email, password: payload.password})
 
     if (response.status === 200) {
       return {
@@ -36,7 +36,7 @@ const UserApi = {
       cpf: cpf
     }
 
-    return requestPOSTAPI(BASE_URL, body)
+    return requestPOSTAPI("/api/v1/customers", body)
       .then((response: any) => {
 	if (response.status === 200) {
 	  return {
@@ -58,7 +58,7 @@ const UserApi = {
 export { UserApi }
 
 // Todo remover any
-const requestPOSTAPI = (URL: string, body: object, token?: string): any => {
+const requestPOSTAPI = (path: string, body: object, token?: string): any => {
   const headers = makeAuthHeader({
     "Content-Type": "application/json",
     method: "POST"
@@ -69,14 +69,14 @@ const requestPOSTAPI = (URL: string, body: object, token?: string): any => {
     headers: headers
   }
 
-  return fetch(URL, params)
+  return fetch(`${URL}/${path}`, params)
 }
 
 // Todo remover any
-const requestGETAPI = (URL: string, token?: string): any => {
+const requestGETAPI = (path: string, token?: string): any => {
   const headers = makeAuthHeader({}, token) 
 
-  return fetch(URL, { headers: headers })
+  return fetch(`${URL}/${path}`, { headers: headers })
 }
 
 const makeAuthHeader = (headers: object, token?: string): HeadersInit => {
