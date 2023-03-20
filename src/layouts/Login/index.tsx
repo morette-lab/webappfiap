@@ -10,9 +10,10 @@ interface LoginLayoutProps {
   email: string;
   password: string;
   onChange: (event: any, type: "email" | "password") => void;
+  requestLogin: () => void;
 }
 
-function LoginLayout({ email, password, onChange }: LoginLayoutProps) {
+function LoginLayout({ email, password, onChange, requestLogin }: LoginLayoutProps) {
   return (
     <div>
       <Header title="Acessar" />
@@ -45,7 +46,7 @@ function LoginLayout({ email, password, onChange }: LoginLayoutProps) {
         </div>
         <div className={styles.buttons}>
           <Button secondary text="Cadastrar" />
-          <Button text="Entrar" />
+          <Button text="Entrar" onClick={requestLogin} />
         </div>
         <div className={styles.secondaryAccess}>
           <span>

@@ -1,47 +1,91 @@
+import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse } from './types'
+
 const BASE_URL = ""
 
-interface ApiResponse {
-  status: number;
-  body?: object;
-}
-
-export interface LoginPayload {
-  email: string;
-  password: string;
-}
-
-export interface LoginResponse extends ApiResponse {
-  token?: string;
-}
-
-
-export const UserApi = {
+const UserApi = {
   login: (payload: LoginPayload): LoginResponse => {
     const response = requestPOSTAPI(BASE_URL, {email: payload.email, password: payload.password})
 
     if (response.status === 200) {
       return {
-	status: 200,
+	success: true,
 	token: response.body.token
       }
     }
 
     return {
-      status: response.status,
-      body: response.body
+      success: false,
+      respBody: response.body
     }
+  },
+
+  signUp: (payload: SignUpPayload): SignUpResponse => {
+    const {
+      name,
+      email,
+      password,
+      phone,
+      cpf
+    } = payload
+
+    const body = {
+      name: name,
+      email: email,
+      password: password,
+      phone: phone,
+      cpf: cpf
+    }
+
+    return requestPOSTAPI(BASE_URL, body)
+      .then((response: any) => {
+	if (response.status === 200) {
+	  return {
+	    success: true
+	  }
+	}
+
+	return response.json()
+      })
+      .then((body: object) => {
+	return {
+	  success: false,
+	  respBody: body
+	}
+      })
   }
 }
 
+export { UserApi }
+
 // Todo remover any
-const requestPOSTAPI = (URL: string, body: object): any => {
-  fetch(URL, {body: JSON.stringify(body)})
-  // TODO
-  return {}
+const requestPOSTAPI = (URL: string, body: object, token?: string): any => {
+  const headers = makeAuthHeader({
+    "Content-Type": "application/json",
+    method: "POST"
+  }, token)
+
+  const params = {
+    body: JSON.stringify(body),
+    headers: headers
+  }
+
+  return fetch(URL, params)
 }
 
 // Todo remover any
-const requestGETAPI = (URL: string): any => {
-  fetch(URL, {})
-  // TODO
+const requestGETAPI = (URL: string, token?: string): any => {
+  const headers = makeAuthHeader({}, token) 
+
+  return fetch(URL, { headers: headers })
+}
+
+const makeAuthHeader = (headers: object, token?: string): HeadersInit => {
+  if (token) {
+    return {
+      ...headers,
+      "Authorization": `Bearer ${token}`
+    }
+  }
+
+  return headers as HeadersInit
 }

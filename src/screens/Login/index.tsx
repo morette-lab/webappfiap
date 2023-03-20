@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import LoginLayout from './../../layouts/Login'
 import { Api } from './../../services/api'
+import { storeToken } from './../../utils/login'
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -22,8 +23,14 @@ function Login() {
     }
   }
 
-  const requestLogin = (email: string, password: string) => {
-    Api.loginAPI({ email, password })
+  const requestLogin = () => {
+    const result = Api.login({ email, password })
+
+    if (result.success) {
+      storeToken(result.response?.token!)
+    }
+
+    // TODO: error alert
   }
 
   return (
@@ -31,6 +38,7 @@ function Login() {
       email={email}
       password={password}
       onChange={onChange}
+      requestLogin={requestLogin}
     />
   )
 }
