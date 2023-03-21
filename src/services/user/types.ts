@@ -1,13 +1,11 @@
-import { ApiResponse } from './../api'
+import { ApiResponse } from './../types'
 
 export interface LoginPayload {
   email: string;
   password: string;
 }
 
-export interface LoginResponse extends ApiResponse {
-  token?: string;
-}
+export type LoginResponse = ApiResponse<{token?: string}>
 
 export interface SignUpPayload {
   name: string;
@@ -17,4 +15,4 @@ export interface SignUpPayload {
   cpf: string;
 }
 
-export interface SignUpResponse extends ApiResponse {}
+export type SignUpResponse = ApiResponse<{}>

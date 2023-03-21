@@ -1,47 +1,34 @@
 import { UserApi } from './user/index'
 import {
   LoginPayload,
-  LoginResponse,
   SignUpPayload,
-  SignUpResponse
 } from './user/types'
-
-export interface ApiResponse {
-  success: boolean;
-  respBody?: object;
-}
-
-interface Return<Payload, SuccessResponse> {
-  success: boolean;
-  payload: Payload;
-  response?: SuccessResponse;
-}
-
-interface IApi {
-  login: (data: LoginPayload) => Return<LoginPayload, {token: string}>,
-  signUp: (data: SignUpPayload) => Return<SignUpPayload, {}>
-}
+import { IApi } from './types'
 
 export const Api: IApi = {
-  login: (data: LoginPayload) => {
-    const result: LoginResponse = UserApi.login(data)
-    
-    if (result.success) {
+  login: async (data: LoginPayload) => {
+    const api_result = await UserApi.login(data)
+
+    if (api_result.success) {
       return {
 	success: true,
 	payload: data,
-	token: result.token
+	response: {
+	  token: api_result.response.token
+	}
       }
     }
+
     return {
       success: false,
       payload: data
     }
-  },
-  signUp: (data: SignUpPayload) => {
-    const result: SignUpResponse = UserApi.signUp(data)
 
-    if (result.success) {
+  },
+  signUp: async (data: SignUpPayload) => {
+    const api_result = await UserApi.signUp(data)
+
+    if (api_result.success) {
       return {
 	success: true,
 	payload: data

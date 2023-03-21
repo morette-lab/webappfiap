@@ -3,23 +3,31 @@ import { LoginPayload, LoginResponse, SignUpPayload, SignUpResponse } from './ty
 const BASE_URL = "http://localhost:8080"
 
 const UserApi = {
-  login: (payload: LoginPayload): LoginResponse => {
-    const response = requestPOSTAPI("/api/v1/customers/login", {email: payload.email, password: payload.password})
+  login: async (payload: LoginPayload): Promise<LoginResponse> => {
+    const response =
+      await requestPOSTAPI("/api/v1/customers/login", {
+	email: payload.email,
+	password: payload.password
+      })
 
     if (response.status === 200) {
+      const body = await response.json()
+      
       return {
 	success: true,
-	token: response.body.token
+	response: {
+	  token: body.token	  
+	}
       }
     }
 
     return {
       success: false,
-      respBody: response.body
+      response: {}
     }
   },
 
-  signUp: (payload: SignUpPayload): SignUpResponse => {
+  signUp: async (payload: SignUpPayload): Promise<SignUpResponse> => {
     const {
       name,
       email,
@@ -36,47 +44,43 @@ const UserApi = {
       cpf: cpf
     }
 
-    return requestPOSTAPI("/api/v1/customers", body)
-      .then((response: any) => {
-	if (response.status === 200) {
-	  return {
-	    success: true
-	  }
-	}
+    const signup_response = await requestPOSTAPI("/api/v1/customers", body)
 
-	return response.json()
-      })
-      .then((body: object) => {
-	return {
-	  success: false,
-	  respBody: body
-	}
-      })
+    if (signup_response.status === 200) {
+      return {
+	success: true,
+	response: {}
+      }
+    }
+
+    return {
+      success: false,
+      response: {}
+    }
   }
 }
 
 export { UserApi }
 
-// Todo remover any
-const requestPOSTAPI = (path: string, body: object, token?: string): any => {
+const requestPOSTAPI = (path: string, body: object, token?: string): Promise<Response> => {
   const headers = makeAuthHeader({
-    "Content-Type": "application/json",
-    method: "POST"
+    "Content-Type": "application/json"
   }, token)
 
   const params = {
     body: JSON.stringify(body),
-    headers: headers
+    headers: headers,
+    method: "POST"
   }
 
-  return fetch(`${URL}/${path}`, params)
+  return fetch(`${BASE_URL}/${path}`, params)
 }
 
 // Todo remover any
 const requestGETAPI = (path: string, token?: string): any => {
   const headers = makeAuthHeader({}, token) 
 
-  return fetch(`${URL}/${path}`, { headers: headers })
+  return fetch(`${BASE_URL}/${path}`, { headers: headers })
 }
 
 const makeAuthHeader = (headers: object, token?: string): HeadersInit => {

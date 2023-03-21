@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import SignUpLayout, { SignUpForm } from './../../layouts/SignUp'
 import { Api } from './../../services/api'
 
-
-function SignUp({ }) {
+function SignUp() {
   const [form, setForm] = useState<SignUpForm>({
     name: "",
     email: "",
@@ -38,18 +37,17 @@ function SignUp({ }) {
   }
 
   const onPress = (_event: any) => {
-    validateFormThen(form, () => {
-      const result =
-        Api.signUp({
-          name: form.name,
-          email: form.email,
-          password: form.password,
-          phone: form.phone,
-          cpf: form.cpf
-        })
+    validateFormThen(form, async () => {
+      const result = await Api.signUp({
+        name: form.name,
+        email: form.email,
+        password: form.password,
+        phone: form.phone,
+        cpf: form.cpf
+      })
 
       if (result.success) {
-        navigate("/home")
+        navigate("/")
       }
     })
   }

@@ -23,14 +23,14 @@ function Login() {
     }
   }
 
-  const requestLogin = () => {
-    const result = Api.login({ email, password })
+  const requestLogin = async () => {
+    const api_result = await Api.login({ email, password })
 
-    if (result.success) {
-      storeToken(result.response?.token!)
+    if (api_result.success) {
+      storeToken(api_result.response?.token!)
+      return
     }
 
-    // TODO: error alert
   }
 
   return (
