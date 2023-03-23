@@ -12,6 +12,7 @@ import Login from './screens/Login';
 import Product from './screens/Product'
 import ConfirmPayment from './screens/Payment/Confirm';
 import SignUp from './screens/SignUp';
+import ConfirmPurchase from './layouts/ConfirmPurchase';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,11 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />
-  }
+  },
+  {
+    path: "/confirm-purchase",
+    element: <ConfirmPurchase />
+  },
 ])
 
 function App() {
